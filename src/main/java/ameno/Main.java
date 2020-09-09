@@ -2,7 +2,7 @@ package ameno;
 import java.io.*;
 
 
-public class Jesus {
+public class Main {
 
     public void encoder(String[] args) throws IOException {
 
@@ -25,7 +25,7 @@ public class Jesus {
             } else outputName = args[4];
         } else outputName = ("out" + inputName);
 
-        JesusChrist xor = new JesusChrist();
+        Functions xor = new Functions();
         xor.encodeDecode(inputName, outputName, key);
     }
 }
