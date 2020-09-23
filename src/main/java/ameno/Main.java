@@ -3,29 +3,35 @@ import java.io.*;
 
 
 public class Main {
-
-    public void encoder(String[] args) throws IOException {
-
-        if (args.length != 3 && args.length != 5) {
+    public static void main(String[] args)  {
+        //ciphxor -c 10 out_test.txt -o res.txt
+        //ciphxor -c 10 test.txt
+        if (args.length != 4 && args.length != 6) {
             System.out.println("Неверное число аргументов");
-            System.exit(1);
+            return;
         }
 
-        if (!args[0].equals("-c") || !args[0].equals("-d")) {
+
+        if (!args[1].equals("-c") && !args[1].equals("-d")) {
             System.out.println("Ожидается флаг");
-            System.exit(1);
+            return;
         }
-        String key = args[1];
-        String inputName = args[2];
+        String key = args[2];
+        String inputName = args[3];
         String outputName = "";
-        if (args.length == 5) {
-            if (!args[3].equals("-o")) {
+        if(args.length==6){
+            if (!args[4].equals("-o")) {
                 System.out.println("Ожидается -o");
-                System.exit(1);
-            } else outputName = args[4];
-        } else outputName = ("out" + inputName);
+                return;
+            }
+            outputName = args[5];
+        }else{
+            outputName = "out_"+inputName;
+        }
 
         Functions xor = new Functions();
         xor.encodeDecode(inputName, outputName, key);
+
+
     }
 }
