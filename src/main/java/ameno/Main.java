@@ -1,6 +1,5 @@
 package ameno;
-import java.io.*;
-
+import java.io.File;
 
 public class Main {
     public static void main(String[] args)  {
@@ -26,12 +25,11 @@ public class Main {
             }
             outputName = args[5];
         }else{
-            outputName = "out_"+inputName;
+            File file = new File(inputName);
+            outputName = file.getParent() + "\\out_"+ file.getName();
         }
 
         Functions xor = new Functions();
         xor.encodeDecode(inputName, outputName, key);
-
-
     }
 }
